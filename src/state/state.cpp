@@ -21,11 +21,11 @@ int State::evaluate(){
 	int ret=0;
 	for (int i=0;i<BOARD_H;i++){
 		for (int j=0;j<BOARD_W;j++){
-			if (this->board.board[this->player][i][j]==1){
+			if (this->board.board[this->player][i][j]==1&&(i!=4&&this->player==0||i!=1&&this->player==1)){
 				ret+=1;
 			}
 			if (this->board.board[this->player][i][j]==2){
-				ret+=5;
+				ret+=6;
 			}
 			if (this->board.board[this->player][i][j]==3){
 				ret+=3;
@@ -40,11 +40,11 @@ int State::evaluate(){
 	}
 	for (int i=0;i<BOARD_H;i++){
 		for (int j=0;j<BOARD_W;j++){
-			if (this->board.board[!this->player][i][j]==1){
+			if (this->board.board[!this->player][i][j]==1&&(i!=4&&this->player==0||i!=1&&this->player==1)){
 				ret-=1;
 			}
 			if (this->board.board[!this->player][i][j]==2){
-				ret-=5;
+				ret-=6;
 			}
 			if (this->board.board[!this->player][i][j]==3){
 				ret-=3;
