@@ -1,6 +1,7 @@
 #include <iostream>
 #include <sstream>
 #include <cstdint>
+#include <climits>
 
 #include "./state.hpp"
 #include "../config.hpp"
@@ -12,8 +13,51 @@
  * @return int 
  */
 int State::evaluate(){
-  // [TODO] design your own evaluation function
-  return 0;
+	// [TODO] design your own evaluation function
+	//always our turn in evaluate(depth be even)
+	if (this->game_state==WIN){
+		return INT_MAX;
+	}
+	int ret=0;
+	for (int i=0;i<BOARD_H;i++){
+		for (int j=0;j<BOARD_W;j++){
+			if (this->board.board[this->player][i][j]==1){
+				ret+=1;
+			}
+			if (this->board.board[this->player][i][j]==2){
+				ret+=3;
+			}
+			if (this->board.board[this->player][i][j]==3){
+				ret+=3;
+			}
+			if (this->board.board[this->player][i][j]==4){
+				ret+=3;
+			}
+			if (this->board.board[this->player][i][j]==5){
+				ret+=6;
+			}
+		}
+	}
+	for (int i=0;i<BOARD_H;i++){
+		for (int j=0;j<BOARD_W;j++){
+			if (this->board.board[!this->player][i][j]==1){
+				ret-=1;
+			}
+			if (this->board.board[!this->player][i][j]==2){
+				ret-=3;
+			}
+			if (this->board.board[!this->player][i][j]==3){
+				ret-=3;
+			}
+			if (this->board.board[!this->player][i][j]==4){
+				ret-=3;
+			}
+			if (this->board.board[!this->player][i][j]==5){
+				ret-=6;
+			}
+		}
+	}
+	return ret;
 }
 
 
