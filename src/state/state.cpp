@@ -25,7 +25,7 @@ int State::evaluate(){
 				ret+=1;
 			}
 			if (this->board.board[this->player][i][j]==2){
-				ret+=3;
+				ret+=5;
 			}
 			if (this->board.board[this->player][i][j]==3){
 				ret+=3;
@@ -34,7 +34,7 @@ int State::evaluate(){
 				ret+=3;
 			}
 			if (this->board.board[this->player][i][j]==5){
-				ret+=6;
+				ret+=9;
 			}
 		}
 	}
@@ -44,7 +44,7 @@ int State::evaluate(){
 				ret-=1;
 			}
 			if (this->board.board[!this->player][i][j]==2){
-				ret-=3;
+				ret-=5;
 			}
 			if (this->board.board[!this->player][i][j]==3){
 				ret-=3;
@@ -53,7 +53,7 @@ int State::evaluate(){
 				ret-=3;
 			}
 			if (this->board.board[!this->player][i][j]==5){
-				ret-=6;
+				ret-=9;
 			}
 		}
 	}
