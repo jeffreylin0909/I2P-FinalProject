@@ -25,7 +25,7 @@ int minimaxval(State *state, int depth,int me,int alpha,int beta){
 			return INT_MAX;
 		}
 		for (Move M:state->legal_actions){
-			alpha=ret=std::max(ret,minimaxval(state->next_state(M),depth-1,me,ret,INT_MAX));
+			alpha=ret=std::max(ret,minimaxval(state->next_state(M),depth-1,me,alpha,beta));
 			if (alpha>=beta){
 				break;
 			}
@@ -36,7 +36,7 @@ int minimaxval(State *state, int depth,int me,int alpha,int beta){
 			return INT_MIN;
 		}
 		for (Move M:state->legal_actions){
-			beta=ret=std::min(ret,minimaxval(state->next_state(M),depth-1,me,INT_MIN,ret));
+			beta=ret=std::min(ret,minimaxval(state->next_state(M),depth-1,me,alpha,beta));
 			if (alpha>=beta){
 				break;
 			}

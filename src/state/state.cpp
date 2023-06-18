@@ -40,7 +40,7 @@ int State::evaluate(){
 	}
 	for (int i=0;i<BOARD_H;i++){
 		for (int j=0;j<BOARD_W;j++){
-			if (this->board.board[!this->player][i][j]==1&&(i!=4&&this->player==0||i!=1&&this->player==1)){
+			if (this->board.board[!this->player][i][j]==1){
 				ret-=1*3;
 			}
 			if (this->board.board[!this->player][i][j]==2){
