@@ -22,38 +22,38 @@ int State::evaluate(){
 	for (int i=0;i<BOARD_H;i++){
 		for (int j=0;j<BOARD_W;j++){
 			if (this->board.board[this->player][i][j]==1&&(i!=4&&this->player==0||i!=1&&this->player==1)){
-				ret+=1*2;
+				ret+=1*8;
 			}
 			if (this->board.board[this->player][i][j]==2){
-				ret+=6*2;
+				ret+=6*8;
 			}
 			if (this->board.board[this->player][i][j]==3){
-				ret+=3*2;
+				ret+=3*8;
 			}
 			if (this->board.board[this->player][i][j]==4){
-				ret+=3*2;
+				ret+=3*8;
 			}
 			if (this->board.board[this->player][i][j]==5){
-				ret+=9*2;
+				ret+=9*8;
 			}
 		}
 	}
 	for (int i=0;i<BOARD_H;i++){
 		for (int j=0;j<BOARD_W;j++){
 			if (this->board.board[!this->player][i][j]==1){
-				ret-=1*3;
+				ret-=1*9;
 			}
 			if (this->board.board[!this->player][i][j]==2){
-				ret-=6*3;
+				ret-=6*9;
 			}
 			if (this->board.board[!this->player][i][j]==3){
-				ret-=3*3;
+				ret-=3*9;
 			}
 			if (this->board.board[!this->player][i][j]==4){
-				ret-=3*3;
+				ret-=3*9;
 			}
 			if (this->board.board[!this->player][i][j]==5){
-				ret-=9*3;
+				ret-=9*9;
 			}
 		}
 	}

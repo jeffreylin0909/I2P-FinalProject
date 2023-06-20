@@ -17,7 +17,11 @@
  */
 int minimaxval(State *state, int depth,int me,int alpha,int beta){
 	if (depth==0){
-		return state->evaluate();
+		if (state->player==me){
+			return state->evaluate();
+		}else {
+			return -state->evaluate();
+		}
 	}
 	int ret;
 	if (state->player==me){
@@ -50,6 +54,8 @@ Move Submission::get_move(State *state, int depth,std::ofstream& fout ){
 	if (state->legal_actions.size()){
 		ret=state->legal_actions[0];
 	}
+	fout << ret.first.first << " " << ret.first.second << " "\
+    	 << ret.second.first << " " << ret.second.second << std::endl; 
 	int Max=INT_MIN,tmp;
 	for (Move M:state->legal_actions){
 		tmp=minimaxval(state->next_state(M),depth-1,state->player,Max,INT_MAX);
