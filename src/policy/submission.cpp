@@ -2,6 +2,7 @@
 #include <climits>
 #include <algorithm>
 #include <iostream>
+#include <fstream>
 
 #include "../state/state.hpp"
 #include "./submission.hpp"
@@ -44,7 +45,7 @@ int minimaxval(State *state, int depth,int me,int alpha,int beta){
 	}
 	return ret;
 }
-Move Submission::get_move(State *state, int depth){
+Move Submission::get_move(State *state, int depth,std::ofstream& fout ){
 	Move ret;
 	if (state->legal_actions.size()){
 		ret=state->legal_actions[0];
@@ -54,6 +55,8 @@ Move Submission::get_move(State *state, int depth){
 		tmp=minimaxval(state->next_state(M),depth-1,state->player,Max,INT_MAX);
 		if (tmp>Max){
 			ret=M;
+			fout << ret.first.first << " " << ret.first.second << " "\
+        	 << ret.second.first << " " << ret.second.second << std::endl; 
 			Max=tmp;
 		}
 	}
